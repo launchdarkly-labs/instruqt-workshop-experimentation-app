@@ -23,7 +23,7 @@ if (typeof window !== "undefined") {
   const LDProvider = await asyncWithLDProvider({
     clientSideID: process.env.NEXT_PUBLIC_LD_CLIENT_KEY || "",
     reactOptions: {
-      useCamelCaseFlagKeys: false,
+      useCamelCaseFlagKeys: true,
     },
     context: {
       kind: "multi",
@@ -59,8 +59,8 @@ if (typeof window !== "undefined") {
       <NoSSRWrapper>
         <LDProvider>
           <PersonaProvider>
-            
-              <LoginProvider>
+
+            <LoginProvider>
               <QuickCommandDialog>
                 <TripsProvider>
                   <KeyboardNavigation />
@@ -73,8 +73,8 @@ if (typeof window !== "undefined") {
                   </Head>
                   <Component {...pageProps} />
                 </TripsProvider>
-                </QuickCommandDialog>
-              </LoginProvider>
+              </QuickCommandDialog>
+            </LoginProvider>
           </PersonaProvider>
         </LDProvider>
       </NoSSRWrapper>

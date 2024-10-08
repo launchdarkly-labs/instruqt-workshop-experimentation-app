@@ -15,7 +15,7 @@ export default function FunnelExperimentGenerator() {
     const [expGenerator, setExpGenerator] = useState(false);
     const [progress, setProgress] = useState(0);
     const updateContext = async () => {
-        await loginUser('user-'+uuidv4(), 'user-'+uuidv4()+'@launchmail.io');
+        await loginUser('user-' + uuidv4(), 'user-' + uuidv4() + '@launchmail.io');
     }
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function FunnelExperimentGenerator() {
 
         for (let i = 0; i < 500; i++) {
 
-            let flagvariation = client?.variation("storeAttentionCallout", "New Items");
+            let flagvariation = client?.variation("storeHighlightText", "New Items");
 
             if (flagvariation === "Final Hours!") {
                 console.log('final hours')
@@ -79,7 +79,7 @@ export default function FunnelExperimentGenerator() {
                         if (stage4metric < metric4) {
                             client?.track("customer-checkout", client.getContext())
                             client?.track("in-cart-total-price", client.getContext(), totalPrice)
-                            
+
                         }
                     }
                 }
