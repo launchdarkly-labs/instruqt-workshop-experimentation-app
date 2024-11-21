@@ -39,7 +39,7 @@ export default function FeatureExperimentGenerator() {
                 totalPrice = Math.floor(Math.random() * (500 - 300 + 1)) + 300;
                 let probablity = Math.random() * 100;
                 if (probablity < 50) {
-                    client?.track("upsell-tracking", client.getContext());
+                    client?.track("in-cart-upsell", client.getContext());
                 }
                 client?.track("in-cart-total-price", client.getContext(), totalPrice);
             }
@@ -47,7 +47,7 @@ export default function FeatureExperimentGenerator() {
                 totalPrice = Math.floor(Math.random() * (300 - 200 + 1)) + 200;
                 let probablity = Math.random() * 100;
                 if (probablity < 50) {
-                    client?.track("upsell-tracking", client.getContext());
+                    client?.track("in-cart-upsell", client.getContext());
                 }
                 client?.track("in-cart-total-price", client.getContext(), totalPrice);
             }

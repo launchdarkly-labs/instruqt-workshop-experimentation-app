@@ -39,7 +39,7 @@ export default function SuggestedItems({ cart, setCart }: { cart: any, setCart: 
 
     const addedSuggestedItemToCart = (item: InventoryItem) => {
         setCart([...cart, item]);
-        LDClient?.track("upsell-tracking", LDClient.getContext());
+        LDClient?.track("in-cart-upsell", LDClient.getContext());
     }
 
     useEffect(() => {

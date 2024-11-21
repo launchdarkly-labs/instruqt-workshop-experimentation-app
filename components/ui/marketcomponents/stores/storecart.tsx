@@ -59,7 +59,7 @@ export function StoreCart({ cart, setCart }: { cart: any; setCart: any }) {
   };
 
   const continueShopping = () => {
-    LDClient?.track("upsell-tracking", LDClient.getContext());
+    LDClient?.track("in-cart-upsell", LDClient.getContext());
 
     router.push("/marketplace");
   };
