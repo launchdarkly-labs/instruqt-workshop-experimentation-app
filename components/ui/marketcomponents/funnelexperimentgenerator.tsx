@@ -69,7 +69,7 @@ export default function FunnelExperimentGenerator() {
                 let stage2metric = Math.random() * 100;
 
                 if (stage2metric < metric2) {
-                    client?.track("item-added", client.getContext())
+                    client?.track("item-added-to-cart", client.getContext())
                     let stage3metric = Math.random() * 100;
 
                     if (stage3metric < metric3) {

@@ -30,13 +30,14 @@ interface InventoryItem {
   id: string | number;
   item: string;
   cost: number;
-  image: string;
+  image: any;
 }
 
 const ProductInventoryComponent = ({
   setOpen,
   open,
   addToCart,
+  sheetDescription,
   sheetTitle,
   tableCaption,
   inventory,
@@ -45,6 +46,7 @@ const ProductInventoryComponent = ({
   setOpen: any;
   open: boolean;
   addToCart: any;
+  sheetDescription?: string;
   sheetTitle?: string;
   tableCaption?: string;
   inventory: any;
@@ -52,8 +54,6 @@ const ProductInventoryComponent = ({
 }) => {
   const LDClient = useLDClient();
   const { toast } = useToast();
-  const { storeHighlightText, featuredStoreHeaders } = useFlags();
-
 
 
   async function storeOpened() {

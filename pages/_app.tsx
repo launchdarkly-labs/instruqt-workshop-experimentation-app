@@ -8,8 +8,8 @@ import { TripsProvider } from "@/utils/contexts/TripContext";
 import { LoginProvider } from "@/utils/contexts/login";
 import KeyboardNavigation from "@/components/KeyboardNavigation";
 import Head from "next/head";
-import { PersonaProvider } from "@/components/personacontext";
-import { QuickCommandDialog } from "@/components/quickcommand";
+import { PersonaProvider } from "@/components/PersonaContext";
+import { QuickCommandDialog } from "@/components/QuickCommand";
 
 
 let c;

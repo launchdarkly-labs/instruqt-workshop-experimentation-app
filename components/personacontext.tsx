@@ -1,14 +1,31 @@
 // PersonaContext.js
-import React, { createContext, useState, useEffect } from 'react';
-import womanPersonaImage from '@/public/woman.svg';
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
+// import womanPersonaImage from '@/public/woman.svg';
 
-export const PersonaContext = createContext(null);
+interface PersonaContextProps {
+  children: ReactNode;
+}
 
-export const PersonaProvider = ({ children }) => {
-  const [personas, setPersonas] = useState([]);
+interface Persona {
+  personaname: string;
+  personatype: string;
+  personaimage: string;
+  personaemail: string;
+}
+
+interface PersonaContextType {
+  personas: Persona[];
+  getPersonas: () => void;
+}
+
+
+export const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
+
+export const PersonaProvider: React.FC<PersonaContextProps> = ({ children }) => {
+  const [personas, setPersonas] = useState<Persona[]>([]);
 
   const getPersonas = () => {
-    const starterPersonas = [
+    const starterPersonas: Persona[] = [
       {
         personaname: "Cody",
         personatype: "Standard User",

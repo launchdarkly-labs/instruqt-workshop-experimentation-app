@@ -1,5 +1,5 @@
 
-import button from "@/components/ui/button";
+// import button from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -18,7 +18,7 @@ export default function FeatureExperimentGenerator() {
     const [progress, setProgress] = useState(0);
 
     const updateContext = async () => {
-        await loginUser('user-'+uuidv4(), 'user-'+uuidv4()+'@launchmail.io');
+        await loginUser('user-' + uuidv4(), 'user-' + uuidv4() + '@launchmail.io');
     }
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function FeatureExperimentGenerator() {
             if (cartSuggestedItems) {
                 totalPrice = Math.floor(Math.random() * (500 - 300 + 1)) + 300;
                 let probablity = Math.random() * 100;
-                if( probablity < 50 ) {
+                if (probablity < 50) {
                     client?.track("upsell-tracking", client.getContext());
                 }
                 client?.track("in-cart-total-price", client.getContext(), totalPrice);
@@ -46,7 +46,7 @@ export default function FeatureExperimentGenerator() {
             else {
                 totalPrice = Math.floor(Math.random() * (300 - 200 + 1)) + 200;
                 let probablity = Math.random() * 100;
-                if( probablity < 50 ) {
+                if (probablity < 50) {
                     client?.track("upsell-tracking", client.getContext());
                 }
                 client?.track("in-cart-total-price", client.getContext(), totalPrice);

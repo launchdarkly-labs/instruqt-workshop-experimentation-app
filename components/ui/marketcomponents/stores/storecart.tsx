@@ -22,9 +22,10 @@ import {
 import { useLDClient, useFlags } from "launchdarkly-react-client-sdk";
 import { useToast } from "@/components/ui/use-toast";
 import galaxyMarketLogo from '@/public/market.png'
-import SuggestedItems from '@/components/ui/marketcomponents/suggestedItems';
+import SuggestedItems from '@/components/ui/marketcomponents/SuggestedItems';
 
 interface InventoryItem {
+  image: any;
   id: string | number;
   item: string;
   cost: number;
@@ -59,7 +60,7 @@ export function StoreCart({ cart, setCart }: { cart: any; setCart: any }) {
 
   const continueShopping = () => {
     LDClient?.track("upsell-tracking", LDClient.getContext());
-    
+
     router.push("/marketplace");
   };
 

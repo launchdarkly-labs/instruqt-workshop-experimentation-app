@@ -1,17 +1,18 @@
 
 import { useEffect, useState } from "react";
-import vrgame from "@/public/marketplace/vrgalaxy_image/vrgame.svg";
+// import vrgame from "@/public/marketplace/vrgalaxy_image/vrgame.svg";
 import vrcamera from "@/public/marketplace/vrgalaxy_image/vrcamera.svg";
-import vrheadset from "@/public/marketplace/vrgalaxy_image/vrheadset.svg";
+// import vrheadset from "@/public/marketplace/vrgalaxy_image/vrheadset.svg";
 import vrsoftware from "@/public/marketplace/vrgalaxy_image/vrsoftware.svg";
-import vrtreadmill from "@/public/marketplace/vrgalaxy_image/vrtreadmill.svg";
-import hapticgloves from "@/public/marketplace/vrgalaxy_image/hapticgloves.svg";
+// import vrtreadmill from "@/public/marketplace/vrgalaxy_image/vrtreadmill.svg";
+// import hapticgloves from "@/public/marketplace/vrgalaxy_image/hapticgloves.svg";
 import vrheadsetcleaningkit from "@/public/marketplace/vrgalaxy_image/vrheadsetcleaningkit.svg";
-import vrcontrollers from "@/public/marketplace/vrgalaxy_image/vrcontrollers.svg";
+// import vrcontrollers from "@/public/marketplace/vrgalaxy_image/vrcontrollers.svg";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import galaxyMarketLogo from '@/public/market.png'
 import { useLDClient } from "launchdarkly-react-client-sdk";
+import { StaticImageData } from "next/image";
 
 
 
@@ -20,7 +21,7 @@ interface InventoryItem {
     vendor: string;
     item: string;
     cost: string;
-    image?: StaticImageData;
+    image?: React.FunctionComponent<React.SVGAttributes<SVGElement>> | string;
 }
 
 
@@ -34,7 +35,7 @@ export default function SuggestedItems({ cart, setCart }: { cart: any, setCart: 
     const totalCost = (cart || []).reduce(
         (total: number, item: InventoryItem) => total + Number(item.cost),
         0
-      );
+    );
 
     const addedSuggestedItemToCart = (item: InventoryItem) => {
         setCart([...cart, item]);
@@ -42,27 +43,27 @@ export default function SuggestedItems({ cart, setCart }: { cart: any, setCart: 
     }
 
     useEffect(() => {
-        const data = [
+        const data: InventoryItem[] = [
             {
-                "id": 6,
-                "vendor": "vrgalaxy",
-                "item": "VR Headset Cleaning Kit",
-                "cost": "29.99",
-                "image": vrheadsetcleaningkit
+                id: 6,
+                vendor: "vrgalaxy",
+                item: "VR Headset Cleaning Kit",
+                cost: "29.99",
+                image: vrheadsetcleaningkit
             },
             {
-                "id": 7,
-                "vendor": "vrgalaxy",
-                "item": "360° VR Camera",
-                "cost": "349.99",
-                "image": vrcamera
+                id: 7,
+                vendor: "vrgalaxy",
+                item: "360° VR Camera",
+                cost: "349.99",
+                image: vrcamera
             },
             {
-                "id": 8,
-                "vendor": "vrgalaxy",
-                "item": "Virtual Reality Development Software",
-                "cost": "199.99",
-                "image": vrsoftware
+                id: 8,
+                vendor: "vrgalaxy",
+                item: "Virtual Reality Development Software",
+                cost: "199.99",
+                image: vrsoftware
             },
         ];
         setInventory(data);
@@ -76,7 +77,7 @@ export default function SuggestedItems({ cart, setCart }: { cart: any, setCart: 
             <Carousel showArrows={true} autoPlay={true} infiniteLoop={true}>
                 {inventory.map(item => (
                     <div key={item.id} className="flex flex-col items-center">
-                        <img src={`${item.image ? item.image?.src : galaxyMarketLogo.src}`} alt={item.item} />
+                        <img src={`${item.image ? item.image : galaxyMarketLogo.src}`} alt={item.item} />
                         <div className="flex flex-col items-center ">
                             <p className="legend mb-12">{item.item} - ${item.cost}</p>
                             <button className="legend " onClick={() => addedSuggestedItemToCart(item)}>Add To Cart</button>

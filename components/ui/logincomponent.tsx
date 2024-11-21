@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { PersonaContext } from "../personacontext";
+import { PersonaContext } from "../PersonaContext";
 import marketplaceVerticalLogo from "@/public/marketplace/galaxy_marketplace_logo_vertical.svg";
 
 interface LoginComponentProps {
@@ -139,9 +139,8 @@ export function LoginComponent({
                         <div className="flex flex-col items-center cursor-pointer " key={index}>
                           <img
                             src={item.personaimage}
-                            className={`hover:brightness-125 w-24 rounded-full mb-4 ${
-                              activeElement === item.personaname ? "border-4 border-black" : ""
-                            }`}
+                            className={`hover:brightness-125 w-24 rounded-full mb-4 ${activeElement === item.personaname ? "border-4 border-black" : ""
+                              }`}
                             onClick={() => handleSetActive(item.personaname, item.personaemail)}
                             alt={item.personaname}
                           />
@@ -154,7 +153,7 @@ export function LoginComponent({
                         </div>
                       ))}
 
-                 
+
                     </div>
                   </div>
                 )}

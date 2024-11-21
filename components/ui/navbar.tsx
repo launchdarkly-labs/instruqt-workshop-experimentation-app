@@ -6,7 +6,7 @@ import { Avatar, AvatarImage } from "./avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import LoginContext from "@/utils/contexts/login";
 import { Button } from "./button";
-import { StoreCart } from "./marketcomponents/stores/storecart";
+import { StoreCart } from "./marketcomponents/stores/StoreCart";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -16,8 +16,8 @@ import {
 } from "./dropdown-menu";
 
 import QRCodeImage from "./QRCodeImage";
-import { PersonaContext } from "../personacontext";
-import { QuickLoginDialog } from "../quicklogindialog";
+import { PersonaContext } from "../PersonaContext";
+import { QuickLoginDialog } from "../QuickLoginDialog";
 import { LoginComponent } from "./logincomponent";
 
 interface NavBarProps {
@@ -69,46 +69,46 @@ const NavBar = React.forwardRef<any, NavBarProps>(
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent className={`w-[300px] h-auto ${!isLoggedIn ? "p-0" : ""}`}>
-                  {isLoggedIn ? (
-                    <>
-                   <div className="mx-auto flex place-content-center w-full">
-                     <img
-                       src={
-                         personas.find((persona) => persona.personaname === user)?.personaimage ||
-                         "ToggleAvatar.png"
-                       }
-                       className="rounded-full h-48"
-                     />
-                   </div>
-                   <div className="mx-auto text-center">
-                     <p className="text-2xl font-normal text-black font-shone mt-4">
-                       Hi {chosenPersona?.personaname}
-                     </p>
-                   </div>
-                   <div className="mx-auto text-center">
-                     <p className="text-md uppercase font-normal tracking-widest text-[#939598] font-shone mt-0">
-                       PLATINUM MEMBER
-                     </p>
-                   </div>
-                   <div className="mx-auto text-center mt-4">
-                     <Button
-                       onClick={handleLogout}
-                       className="items-center hover:bg-gradient-experimentation-grey 
+                {isLoggedIn ? (
+                  <>
+                    <div className="mx-auto flex place-content-center w-full">
+                      <img
+                        src={
+                          personas.find((persona) => persona.personaname === user)?.personaimage ||
+                          "ToggleAvatar.png"
+                        }
+                        className="rounded-full h-48"
+                      />
+                    </div>
+                    <div className="mx-auto text-center">
+                      <p className="text-2xl font-normal text-black font-shone mt-4">
+                        Hi {chosenPersona?.personaname}
+                      </p>
+                    </div>
+                    <div className="mx-auto text-center">
+                      <p className="text-md uppercase font-normal tracking-widest text-[#939598] font-shone mt-0">
+                        PLATINUM MEMBER
+                      </p>
+                    </div>
+                    <div className="mx-auto text-center mt-4">
+                      <Button
+                        onClick={handleLogout}
+                        className="items-center hover:bg-gradient-experimentation-grey 
                        hover:text-white font-audimat my-2 w-full bg-gradient-experimentation text-white text-xl rounded-none"
-                     >
-                       Logout
-                     </Button>
-                     <QuickLoginDialog personas={personas} />
-                   </div>
-                   </>
-                  ) : (<LoginComponent
-                    isLoggedIn={isLoggedIn}
-                    setIsLoggedIn={setIsLoggedIn}
-                    loginUser={loginUser}
-                    name={name}
-                  />
-                  )
-                  }
+                      >
+                        Logout
+                      </Button>
+                      <QuickLoginDialog personas={personas} />
+                    </div>
+                  </>
+                ) : (<LoginComponent
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  loginUser={loginUser}
+                  name={name}
+                />
+                )
+                }
               </PopoverContent>
             </Popover>
           </div>

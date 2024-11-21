@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ReactNode } from "react"
 import {
     Beaker,
     FlaskConical,
@@ -16,10 +17,14 @@ import {
     CommandList,
 } from "@/components/ui/command"
 import { toast } from "./ui/use-toast";
-import FunnelExperimentGenerator from "@/components/ui/marketcomponents/funnelexperimentgenerator";
-import FeatureExperimentGenerator from "@/components/ui/marketcomponents/featureexperimentgenerator";
+import FunnelExperimentGenerator from "@/components/ui/marketcomponents/FunnelExperimentGenerator";
+import FeatureExperimentGenerator from "@/components/ui/marketcomponents/FeatureExperimentGenerator";
 
-export function QuickCommandDialog({ children }) {
+interface QuickCommandDialogProps {
+    children: ReactNode;
+}
+
+export function QuickCommandDialog({ children }: QuickCommandDialogProps) {
     const [open, setOpen] = React.useState(false)
     const location = useRouter();
     const [timer, setTimer] = React.useState(0);
